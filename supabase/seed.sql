@@ -1,0 +1,2 @@
+-- Classy Database Seed Placeholder (Phase 01)
+-- Database schema, migrations, and seeds will be introduced in future phases.

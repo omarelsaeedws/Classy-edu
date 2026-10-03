@@ -1,0 +1,9 @@
+# The function verifies the user's bearer token with Supabase Auth itself.
+# Disable gateway JWT checks so browser OPTIONS preflight requests can reach CORS handling.
+[functions.check-attendance]
+verify_jwt = false
+
+# The function verifies the bearer token with Supabase Auth before using its
+# server-side service-role client to purge account data and delete the user.
+[functions.delete-account]
+verify_jwt = false

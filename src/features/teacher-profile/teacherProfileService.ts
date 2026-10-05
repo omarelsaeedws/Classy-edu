@@ -4,9 +4,13 @@ import type { PaymentProvider } from '@/features/teacher-subscriptions/types'
 
 export const teacherProfileService = {
   async getOwnProfile(): Promise<TeacherProfileData> {
+    const { data: { user }, error: userError } = await supabase.auth.getUser()
+    if (userError) throw userError
+    if (!user) throw new Error('Authentication is required.')
+
     const [profileResult, accountResult] = await Promise.all([
-      supabase.from('teacher_profiles').select('*').maybeSingle(),
-      supabase.from('profiles').select('full_name, phone, avatar_url').maybeSingle(),
+      supabase.from('teacher_profiles').select('*').eq('teacher_id', user.id).maybeSingle(),
+      supabase.from('profiles').select('full_name, phone, avatar_url').eq('id', user.id).maybeSingle(),
     ])
 
     if (profileResult.error) throw profileResult.error

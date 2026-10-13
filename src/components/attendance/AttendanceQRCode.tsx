@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import QRCode from 'qrcode'
 
-export const AttendanceQRCode: React.FC<{ value: string }> = ({ value }) => {
+export const AttendanceQRCode: React.FC<{ value: string; alt?: string; className?: string }> = ({ value, alt = 'رمز QR لتسجيل الحضور', className }) => {
   const [imageUrl, setImageUrl] = useState<string | null>(null)
   const [failed, setFailed] = useState(false)
 
@@ -18,5 +18,5 @@ export const AttendanceQRCode: React.FC<{ value: string }> = ({ value }) => {
 
   if (failed) return <p role="alert" className="text-sm text-[#B91C1C]">تعذّر إنشاء QR. استخدم كود الحضور اليدوي.</p>
   if (!imageUrl) return <p className="text-sm text-[#64748B] dark:text-[#94A3B8]">جارٍ إنشاء QR...</p>
-  return <img src={imageUrl} alt="رمز QR لتسجيل الحضور" className="mx-auto h-64 w-64 rounded-lg border border-[#E2E8F0] bg-white p-2 dark:border-[#334155]" />
+  return <img src={imageUrl} alt={alt} className={className ?? 'mx-auto h-64 w-64 rounded-lg border border-[#E2E8F0] bg-white p-2 dark:border-[#334155]'} />
 }

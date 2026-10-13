@@ -40,6 +40,8 @@ import { ActiveTeacherRoute } from './ActiveTeacherRoute'
 import { NotificationProvider } from '@/features/notifications/NotificationProvider'
 import { NotificationsPage } from '@/pages/Notifications/NotificationsPage'
 import { AccountSettingsPage } from '@/pages/Account/AccountSettingsPage'
+import { StudentIdPage } from '@/pages/Student/StudentIdPage'
+import { TeacherVerifySubscriptionPage } from '@/pages/Teacher/TeacherVerifySubscriptionPage'
 
 /**
  * Layout wrapper that provides AuthProvider within the router context.
@@ -132,6 +134,10 @@ const router = createBrowserRouter([
   {
     path: '/student/settings',
     element: <AuthLayout><ProtectedRoute><RoleRoute allowedRole="STUDENT"><AccountSettingsPage /></RoleRoute></ProtectedRoute></AuthLayout>,
+  },
+  {
+    path: '/student/id',
+    element: <AuthLayout><ProtectedRoute><RoleRoute allowedRole="STUDENT"><StudentIdPage /></RoleRoute></ProtectedRoute></AuthLayout>,
   },
   {
     path: '/student/onboarding',
@@ -261,6 +267,10 @@ const router = createBrowserRouter([
         <ProtectedRoute><RoleRoute allowedRole="TEACHER"><ActiveTeacherRoute><TeacherSessionsPage /></ActiveTeacherRoute></RoleRoute></ProtectedRoute>
       </AuthLayout>
     ),
+  },
+  {
+    path: '/teacher/verify-subscription',
+    element: <AuthLayout><ProtectedRoute><RoleRoute allowedRole="TEACHER"><ActiveTeacherRoute><TeacherVerifySubscriptionPage /></ActiveTeacherRoute></RoleRoute></ProtectedRoute></AuthLayout>,
   },
   {
     path: '/teacher/sessions/:id/attendance',

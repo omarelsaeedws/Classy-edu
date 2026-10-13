@@ -1,5 +1,5 @@
 import React from 'react'
-import { LogOut, Settings } from 'lucide-react'
+import { IdCard, LogOut, Settings } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/Button'
 import { useAuth } from '@/features/auth/hooks/useAuth'
@@ -14,6 +14,7 @@ export const StudentNavigation: React.FC = () => {
         <Link className="rounded-lg px-3 py-2 hover:bg-[#F8FAFC] dark:hover:bg-[#111827]" to="/student">الرئيسية</Link>
         <Link className="rounded-lg px-3 py-2 hover:bg-[#F8FAFC] dark:hover:bg-[#111827]" to="/student/teachers">المدرسون</Link>
         <Link className="rounded-lg px-3 py-2 hover:bg-[#F8FAFC] dark:hover:bg-[#111827]" to="/student/subscriptions">اشتراكاتي</Link>
+        <Link className="flex items-center gap-1 rounded-lg px-3 py-2 hover:bg-[#F8FAFC] dark:hover:bg-[#111827]" to="/student/id"><IdCard className="h-4 w-4" />بطاقة الطالب</Link>
         <Link className="flex items-center gap-1 rounded-lg px-3 py-2 hover:bg-[#F8FAFC] dark:hover:bg-[#111827]" to="/student/settings"><Settings className="h-4 w-4" />الإعدادات</Link>
         <Button variant="ghost" size="sm" onClick={() => void logout()}><LogOut className="h-4 w-4" />خروج</Button>
       </div>

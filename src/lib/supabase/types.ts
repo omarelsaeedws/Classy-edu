@@ -55,6 +55,7 @@ export interface Database {
           grade: string | null
           subjects: string[] | null
           avatar_url: string | null
+          student_identifier: string | null
           created_at: string
           updated_at: string
         }
@@ -70,6 +71,7 @@ export interface Database {
           grade?: string | null
           subjects?: string[] | null
           avatar_url?: string | null
+          student_identifier?: string | null
           created_at?: string
           updated_at?: string
         }
@@ -85,6 +87,7 @@ export interface Database {
           grade?: string | null
           subjects?: string[] | null
           avatar_url?: string | null
+          student_identifier?: string | null
           created_at?: string
           updated_at?: string
         }
@@ -127,9 +130,9 @@ export interface Database {
         Relationships: []
       }
       student_teacher_subscriptions: {
-        Row: { id: string; student_id: string; teacher_id: string; group_id: string; monthly_price_snapshot: number; status: 'PENDING_PAYMENT' | 'UNDER_REVIEW' | 'ACTIVE' | 'REJECTED' | 'CANCELLED' | 'EXPIRED'; created_at: string; updated_at: string; submitted_at: string | null; approved_at: string | null; rejected_at: string | null; started_at: string | null; expires_at: string | null; reviewed_by: string | null; rejection_reason: string | null }
-        Insert: { id?: string; student_id: string; teacher_id: string; group_id: string; monthly_price_snapshot: number; status?: 'PENDING_PAYMENT' | 'UNDER_REVIEW' | 'ACTIVE' | 'REJECTED' | 'CANCELLED' | 'EXPIRED'; created_at?: string; updated_at?: string; submitted_at?: string | null; approved_at?: string | null; rejected_at?: string | null; started_at?: string | null; expires_at?: string | null; reviewed_by?: string | null; rejection_reason?: string | null }
-        Update: { id?: string; student_id?: string; teacher_id?: string; group_id?: string; monthly_price_snapshot?: number; status?: 'PENDING_PAYMENT' | 'UNDER_REVIEW' | 'ACTIVE' | 'REJECTED' | 'CANCELLED' | 'EXPIRED'; created_at?: string; updated_at?: string; submitted_at?: string | null; approved_at?: string | null; rejected_at?: string | null; started_at?: string | null; expires_at?: string | null; reviewed_by?: string | null; rejection_reason?: string | null }
+        Row: { id: string; verification_qr_token: string; student_id: string; teacher_id: string; group_id: string; monthly_price_snapshot: number; status: 'PENDING_PAYMENT' | 'UNDER_REVIEW' | 'ACTIVE' | 'REJECTED' | 'CANCELLED' | 'EXPIRED'; created_at: string; updated_at: string; submitted_at: string | null; approved_at: string | null; rejected_at: string | null; started_at: string | null; expires_at: string | null; reviewed_by: string | null; rejection_reason: string | null }
+        Insert: { id?: string; verification_qr_token?: string; student_id: string; teacher_id: string; group_id: string; monthly_price_snapshot: number; status?: 'PENDING_PAYMENT' | 'UNDER_REVIEW' | 'ACTIVE' | 'REJECTED' | 'CANCELLED' | 'EXPIRED'; created_at?: string; updated_at?: string; submitted_at?: string | null; approved_at?: string | null; rejected_at?: string | null; started_at?: string | null; expires_at?: string | null; reviewed_by?: string | null; rejection_reason?: string | null }
+        Update: { id?: string; verification_qr_token?: string; student_id?: string; teacher_id?: string; group_id?: string; monthly_price_snapshot?: number; status?: 'PENDING_PAYMENT' | 'UNDER_REVIEW' | 'ACTIVE' | 'REJECTED' | 'CANCELLED' | 'EXPIRED'; created_at?: string; updated_at?: string; submitted_at?: string | null; approved_at?: string | null; rejected_at?: string | null; started_at?: string | null; expires_at?: string | null; reviewed_by?: string | null; rejection_reason?: string | null }
         Relationships: []
       }
       student_teacher_payments: {
@@ -244,6 +247,9 @@ export interface Database {
         Args: { selected_role: 'STUDENT' | 'TEACHER'; full_name: string; phone: string }
         Returns: undefined
       }
+      save_my_student_avatar: { Args: { p_avatar_path: string | null }; Returns: undefined }
+      get_my_student_id_cards: { Args: Record<PropertyKey, never>; Returns: Json }
+      verify_student_subscription_for_teacher: { Args: { p_identifier: string }; Returns: Json }
     }
     Enums: {
       user_role: UserRole

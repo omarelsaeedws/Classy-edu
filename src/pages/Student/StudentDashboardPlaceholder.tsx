@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { GraduationCap, LogOut, CheckCircle2, Search, CreditCard, CalendarCheck2, Settings, Bell } from 'lucide-react'
+import { CheckCircle2, Search, CreditCard, CalendarCheck2, Bell, IdCard } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/Button'
-import { Badge } from '@/components/ui/Badge'
 import { useAuth } from '@/features/auth/hooks/useAuth'
 import { studentTeacherService } from '@/features/student-teachers/studentTeacherService'
 import type { StudentSubscriptionSummary } from '@/features/student-teachers/types'
@@ -21,7 +20,7 @@ const cairoDate = () => {
 }
 
 export const StudentDashboardPlaceholder: React.FC = () => {
-  const { profile, logout } = useAuth()
+  const { profile } = useAuth()
   const { notifications, loading: notificationsLoading, error: notificationsError } = useNotifications()
   const [now, setNow] = useState<number | null>(null)
   const [subscriptions, setSubscriptions] = useState<StudentSubscriptionSummary[]>([])
@@ -63,38 +62,12 @@ export const StudentDashboardPlaceholder: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0F172A] text-[#0F172A] dark:text-[#F8FAFC] p-4 sm:p-8 transition-colors">
       <div className="max-w-4xl mx-auto space-y-6">
-        {/* Top bar */}
-        <div className="flex items-center justify-between bg-white dark:bg-[#1E293B] p-4 sm:p-6 rounded-xl border border-[#E2E8F0] dark:border-[#334155] shadow-xs">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-[#EFF6FF] dark:bg-[#1E3A8A]/50 text-[#2563EB] dark:text-[#3B82F6] flex items-center justify-center font-bold">
-              <GraduationCap className="w-5 h-5" />
-            </div>
-            <div className="text-right">
-              <h1 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC]">
-                مرحباً، {profile?.full_name || 'بك'}
-              </h1>
-              <p className="text-xs text-[#64748B] dark:text-[#94A3B8]">
-                حساب الطالب: {profile?.full_name}
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <Badge variant="success">طالب معتمد</Badge>
-            <Link to="/student/settings"><Button variant="outline" size="sm" aria-label="الإعدادات"><Settings className="h-4 w-4" /><span className="hidden sm:inline">الإعدادات</span></Button></Link>
-            <Button variant="outline" size="sm" onClick={logout} className="gap-2">
-              <LogOut className="w-4 h-4 rtl:rotate-180" />
-              <span className="hidden sm:inline">تسجيل الخروج</span>
-            </Button>
-          </div>
-        </div>
-
         {/* Content Card */}
         <div className="bg-white dark:bg-[#1E293B] p-6 sm:p-8 rounded-xl border border-[#E2E8F0] dark:border-[#334155] shadow-xs text-right">
           <div className="flex items-center gap-2 mb-4">
             <CheckCircle2 className="w-5 h-5 text-[#16A34A]" />
             <h2 className="text-base font-bold text-[#0F172A] dark:text-[#F8FAFC]">
-              تم استكمال ملف الطالب بنجاح
+              مرحباً، {profile?.full_name || 'بك'} — تم استكمال ملف الطالب بنجاح
             </h2>
           </div>
 
@@ -113,6 +86,7 @@ export const StudentDashboardPlaceholder: React.FC = () => {
           <div className="grid gap-3 sm:grid-cols-2">
             <Link to="/student/teachers" className="flex items-center gap-3 rounded-lg border border-[#E2E8F0] p-4 text-sm font-medium hover:border-[#2563EB] dark:border-[#334155] dark:hover:border-[#3B82F6]"><Search className="h-5 w-5 text-[#2563EB]" />اكتشف المدرسين والمجموعات</Link>
             <Link to="/student/subscriptions" className="flex items-center gap-3 rounded-lg border border-[#E2E8F0] p-4 text-sm font-medium hover:border-[#2563EB] dark:border-[#334155] dark:hover:border-[#3B82F6]"><CreditCard className="h-5 w-5 text-[#2563EB]" />متابعة اشتراكاتي ودفعاتي</Link>
+            <Link to="/student/id" className="flex items-center gap-3 rounded-lg border border-[#E2E8F0] p-4 text-sm font-medium hover:border-[#2563EB] dark:border-[#334155] dark:hover:border-[#3B82F6]"><IdCard className="h-5 w-5 text-[#2563EB]" />بطاقة الطالب</Link>
             <Link to="/student/attendance" className="flex items-center gap-3 rounded-lg border border-[#E2E8F0] p-4 text-sm font-medium hover:border-[#2563EB] dark:border-[#334155] dark:hover:border-[#3B82F6]"><CalendarCheck2 className="h-5 w-5 text-[#2563EB]" />حصصي وتسجيل الحضور</Link>
             <Link to="/student/attendance/history" className="flex items-center gap-3 rounded-lg border border-[#E2E8F0] p-4 text-sm font-medium hover:border-[#2563EB] dark:border-[#334155] dark:hover:border-[#3B82F6]"><CalendarCheck2 className="h-5 w-5 text-[#2563EB]" />سجل الحضور والغياب حسب المادة</Link>
           </div>

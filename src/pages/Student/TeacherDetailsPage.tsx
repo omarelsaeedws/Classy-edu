@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ArrowRight, CalendarDays, MapPin, UserRound } from 'lucide-react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { StudentNavigation } from '@/components/navigation/StudentNavigation'
+import { RoleNavigation } from '@/components/navigation/RoleNavigation'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { getPaymentProviderLabel } from '@/features/teacher-subscriptions/types'
@@ -62,7 +62,7 @@ export const TeacherDetailsPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] dark:bg-[#0F172A] dark:text-[#F8FAFC]" dir="rtl">
-      {profile?.role === 'STUDENT' ? <StudentNavigation /> : <nav className="flex items-center justify-between border-b border-[#E2E8F0] bg-white px-4 py-3 dark:border-[#334155] dark:bg-[#1E293B] sm:px-6" dir="rtl"><Link to="/" aria-label="Classy - الصفحة الرئيسية"><BrandLogo className="h-8" /></Link><Link to="/login" className="text-sm text-[#2563EB] dark:text-[#60A5FA]">تسجيل الدخول</Link></nav>}
+      {profile?.role === 'STUDENT' ? <RoleNavigation role="STUDENT" /> : <nav className="flex items-center justify-between border-b border-[#E2E8F0] bg-white px-4 py-3 dark:border-[#334155] dark:bg-[#1E293B] sm:px-6" dir="rtl"><Link to="/" aria-label="Classy - الصفحة الرئيسية"><BrandLogo className="h-8" /></Link><Link to="/login" className="text-sm text-[#2563EB] dark:text-[#60A5FA]">تسجيل الدخول</Link></nav>}
       <main className="mx-auto max-w-5xl space-y-6 px-4 py-8 sm:px-6">
         <Link to={profile?.role === 'STUDENT' ? '/student/teachers' : '/'} className="inline-flex items-center gap-2 text-sm text-[#2563EB] dark:text-[#60A5FA]"><ArrowRight className="h-4 w-4" />{profile?.role === 'STUDENT' ? 'العودة للمدرسين' : 'العودة للرئيسية'}</Link>
         {error && <div role="alert" className="rounded-lg border border-[#FECACA] bg-[#FEF2F2] p-4 text-sm text-[#B91C1C] dark:border-red-900 dark:bg-red-950/40 dark:text-red-300">{error}</div>}

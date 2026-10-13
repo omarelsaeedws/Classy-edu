@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { ArrowRight, CalendarDays, Clock3, ReceiptText } from 'lucide-react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { StudentNavigation } from '@/components/navigation/StudentNavigation'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { Select } from '@/components/ui/Select'
@@ -74,7 +73,6 @@ export const StudentSubscriptionDetailsPage: React.FC = () => {
   }
 
   return <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] dark:bg-[#0F172A] dark:text-[#F8FAFC]" dir="rtl">
-    <StudentNavigation />
     <main className="mx-auto max-w-3xl space-y-5 px-4 py-8 sm:px-6">
       <Link to="/student/subscriptions" className="inline-flex items-center gap-2 text-sm text-[#2563EB] dark:text-[#60A5FA]"><ArrowRight className="h-4 w-4" />العودة لاشتراكاتي</Link>
       {error && <div role="alert" className="rounded-lg border border-[#FECACA] bg-[#FEF2F2] p-4 text-sm text-[#B91C1C] dark:border-red-900 dark:bg-red-950/40 dark:text-red-300">{error}</div>}

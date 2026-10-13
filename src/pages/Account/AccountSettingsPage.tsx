@@ -1,5 +1,5 @@
-import { useState, type FormEvent } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useState, type FormEvent } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { ArrowRight, Save, UserRound } from 'lucide-react'
 import { AccountDeletionSection } from '@/components/account/AccountDeletionSection'
 import { Button } from '@/components/ui/Button'
@@ -7,9 +7,11 @@ import { Input } from '@/components/ui/Input'
 import { useAuth } from '@/features/auth/hooks/useAuth'
 import { supabase } from '@/lib/supabase/client'
 import { isValidEgyptianPhone } from '@/lib/validations'
+import { StudentAvatarSettings } from './StudentAvatarSettings'
 
 export const AccountSettingsPage = () => {
   const { profile, user, refreshProfile } = useAuth()
+  const location = useLocation()
   const [fullName, setFullName] = useState(profile?.full_name ?? '')
   const [phone, setPhone] = useState(profile?.phone ?? '')
   const [saving, setSaving] = useState(false)
@@ -17,6 +19,12 @@ export const AccountSettingsPage = () => {
   const [phoneError, setPhoneError] = useState('')
   const [message, setMessage] = useState('')
   const [error, setError] = useState('')
+
+  useEffect(() => {
+    if (location.hash === '#profile-picture') {
+      window.setTimeout(() => document.getElementById('profile-picture')?.scrollIntoView({ behavior: 'smooth' }), 0)
+    }
+  }, [location.hash])
 
   const saveProfile = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -55,6 +63,8 @@ export const AccountSettingsPage = () => {
     <div className="mx-auto max-w-3xl space-y-5">
       <Link to={dashboard} className="inline-flex items-center gap-2 text-sm text-[#2563EB] dark:text-[#60A5FA]"><ArrowRight className="h-4 w-4" />العودة للوحة التحكم</Link>
       <header><h1 className="text-2xl font-bold">إعدادات الحساب</h1><p className="mt-1 text-sm text-[#64748B] dark:text-[#94A3B8]">إدارة معلومات الدخول والبيانات الأساسية.</p></header>
+
+      {profile?.role === 'STUDENT' && <StudentAvatarSettings />}
 
       <section className="rounded-xl border border-[#E2E8F0] bg-white p-5 dark:border-[#334155] dark:bg-[#1E293B]" aria-labelledby="account-info-heading">
         <h2 id="account-info-heading" className="mb-4 flex items-center gap-2 font-semibold"><UserRound className="h-5 w-5 text-[#2563EB]" />معلومات الحساب</h2>

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { ArrowRight, CalendarDays, Clock3 } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { StudentNavigation } from '@/components/navigation/StudentNavigation'
 import { attendanceService } from '@/features/attendance/attendanceService'
 import type { AttendanceHistorySession, StudentAttendanceSubject } from '@/features/attendance/types'
 
@@ -53,7 +52,6 @@ export const StudentAttendanceHistoryPage: React.FC = () => {
       : 'bg-green-50 text-green-700 dark:bg-green-950/30 dark:text-green-300'
 
   return <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] dark:bg-[#0F172A] dark:text-[#F8FAFC]" dir="rtl">
-    <StudentNavigation />
     <main className="mx-auto max-w-5xl space-y-5 px-4 py-8 sm:px-6">
       <Link to="/student/attendance" className="inline-flex items-center gap-2 text-sm text-[#2563EB] dark:text-[#60A5FA]"><ArrowRight className="h-4 w-4" />العودة للحصص وتسجيل الحضور</Link>
       <header><h1 className="text-2xl font-bold">سجل الحضور والغياب</h1><p className="mt-1 text-sm text-[#64748B] dark:text-[#94A3B8]">اختر المادة لعرض الحصص التي حضرتها أو تغيبت عنها.</p></header>

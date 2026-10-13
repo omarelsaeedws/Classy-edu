@@ -73,3 +73,28 @@
   --radius-md: 12px;
   --radius-lg: 16px;
 }
+
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+
+  #student-id-print-area,
+  #student-id-print-area * {
+    visibility: visible !important;
+  }
+
+  #student-id-print-area {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+  }
+
+  #student-id-print-area article {
+    margin: 0 0 16px;
+    break-inside: avoid;
+    color: #0f172a;
+    background: #fff;
+    box-shadow: none;
+  }
+}

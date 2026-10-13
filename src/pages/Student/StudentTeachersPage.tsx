@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { BookOpen, Search, Users } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { StudentNavigation } from '@/components/navigation/StudentNavigation'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
@@ -64,7 +63,6 @@ export const StudentTeachersPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] dark:bg-[#0F172A] dark:text-[#F8FAFC]" dir="rtl">
-      <StudentNavigation />
       <main className="mx-auto max-w-6xl space-y-6 px-4 py-8 sm:px-6">
         <header><h1 className="text-2xl font-bold">اكتشف المدرسين</h1><p className="mt-1 text-sm text-[#64748B] dark:text-[#94A3B8]">مدرسون نشطون ومجموعات تناسب {profile?.stage} — {profile?.grade} في أبو كبير.</p></header>
         <form className={`${panelClass} grid gap-4 sm:grid-cols-2 lg:grid-cols-3`} onSubmit={(event) => { event.preventDefault(); void search(filters) }}>

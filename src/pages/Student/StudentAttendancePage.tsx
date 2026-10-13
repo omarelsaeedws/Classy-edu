@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { ArrowRight, CalendarDays, Clock3 } from 'lucide-react'
 import { Link, useParams, useSearchParams } from 'react-router-dom'
 import { AttendanceQrScanner } from '@/components/attendance/AttendanceQrScanner'
-import { StudentNavigation } from '@/components/navigation/StudentNavigation'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { attendanceService } from '@/features/attendance/attendanceService'
@@ -95,7 +94,6 @@ export const StudentAttendancePage: React.FC = () => {
   }
 
   return <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] dark:bg-[#0F172A] dark:text-[#F8FAFC]" dir="rtl">
-    <StudentNavigation />
     <main className="mx-auto max-w-3xl space-y-5 px-4 py-8 sm:px-6">
       <Link to="/student" className="inline-flex items-center gap-2 text-sm text-[#2563EB] dark:text-[#60A5FA]"><ArrowRight className="h-4 w-4" />العودة للوحة الطالب</Link>
       <section className={`${panel} space-y-4`}><div><h1 className="text-2xl font-bold">تسجيل الحضور</h1><p className="mt-1 text-sm text-[#64748B] dark:text-[#94A3B8]">امسح QR الظاهر لدى المدرس، أو أدخل كود الحضور يدويًا. يلزم اشتراك نشط في المجموعة.</p></div>

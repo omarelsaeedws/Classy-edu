@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { ArrowLeft, CalendarClock, CreditCard, UserRound } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
-import { StudentNavigation } from '@/components/navigation/StudentNavigation'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { studentTeacherService } from '@/features/student-teachers/studentTeacherService'
@@ -53,7 +52,6 @@ export const StudentSubscriptionsPage: React.FC = () => {
   }
 
   return <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] dark:bg-[#0F172A] dark:text-[#F8FAFC]" dir="rtl">
-    <StudentNavigation />
     <main className="mx-auto max-w-5xl space-y-6 px-4 py-8 sm:px-6">
       <header><h1 className="text-2xl font-bold">اشتراكاتي</h1><p className="mt-1 text-sm text-[#64748B] dark:text-[#94A3B8]">تابع طلبات الاشتراك والمدفوعات ومدة الاشتراكات النشطة.</p></header>
       {error && <div role="alert" className="rounded-lg border border-[#FECACA] bg-[#FEF2F2] p-4 text-sm text-[#B91C1C] dark:border-red-900 dark:bg-red-950/40 dark:text-red-300">{error}</div>}

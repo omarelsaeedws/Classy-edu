@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { ArrowRight, CreditCard, FileImage } from 'lucide-react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { StudentNavigation } from '@/components/navigation/StudentNavigation'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { Select } from '@/components/ui/Select'
@@ -86,7 +85,6 @@ export const StudentSubscriptionRenewalPage: React.FC = () => {
         : renewal?.status === 'REJECTED' ? 'مرفوض' : 'ملغي'
 
   return <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] dark:bg-[#0F172A] dark:text-[#F8FAFC]" dir="rtl">
-    <StudentNavigation />
     <main className="mx-auto max-w-3xl space-y-5 px-4 py-8 sm:px-6">
       <Link to="/student/subscriptions" className="inline-flex items-center gap-2 text-sm text-[#2563EB] dark:text-[#60A5FA]"><ArrowRight className="h-4 w-4" />العودة لاشتراكاتي</Link>
       <header><h1 className="text-2xl font-bold">تجديد الاشتراك</h1><p className="mt-1 text-sm text-[#64748B] dark:text-[#94A3B8]">يبدأ الشهر الإضافي بعد اعتماد المدرس، ويضاف إلى تاريخ انتهاء اشتراكك الحالي.</p></header>

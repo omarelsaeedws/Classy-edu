@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { ArrowRight, Clock3, CreditCard, FileImage, LogOut, ShieldCheck } from 'lucide-react'
+import { ArrowRight, Clock3, CreditCard, FileImage, ShieldCheck } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
@@ -20,7 +20,7 @@ const getReadableError = (error: unknown) => {
 }
 
 export const TeacherSubscriptionPage: React.FC = () => {
-  const { user, profile, logout } = useAuth()
+  const { user, profile } = useAuth()
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
@@ -160,7 +160,6 @@ export const TeacherSubscriptionPage: React.FC = () => {
             <h1 className="text-2xl font-bold">اشتراك المدرس في Classy</h1>
             <p className="mt-1 text-sm text-[#64748B] dark:text-[#94A3B8]">أهلاً {profile?.full_name}، تابع حالة اشتراك المنصة من هنا.</p>
           </div>
-          <Button variant="outline" size="sm" onClick={logout} className="gap-2"><LogOut className="h-4 w-4" />تسجيل الخروج</Button>
         </header>
 
         {error && <div role="alert" className="rounded-lg border border-[#FECACA] bg-[#FEF2F2] p-4 text-sm text-[#B91C1C] dark:border-red-900 dark:bg-red-950/40 dark:text-red-300">{error}</div>}

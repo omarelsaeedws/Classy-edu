@@ -13,6 +13,7 @@ export interface UserProfile {
   grade: string | null
   subjects: string[] | null
   avatar_url: string | null
+  student_identifier: string | null
   created_at: string
   updated_at: string
 }

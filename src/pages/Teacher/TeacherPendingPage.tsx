@@ -1,12 +1,11 @@
 import React from 'react'
-import { Clock, ShieldAlert, LogOut, CreditCard } from 'lucide-react'
+import { Clock, ShieldAlert, CreditCard } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { Button } from '@/components/ui/Button'
 import { Badge } from '@/components/ui/Badge'
 import { useAuth } from '@/features/auth/hooks/useAuth'
 
 export const TeacherPendingPage: React.FC = () => {
-  const { profile, logout } = useAuth()
+  const { profile } = useAuth()
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center py-12 px-4 sm:px-6 lg:px-8 bg-[#F8FAFC] dark:bg-[#0F172A] transition-colors">
@@ -49,15 +48,6 @@ export const TeacherPendingPage: React.FC = () => {
             <CreditCard className="h-4 w-4" />متابعة الاشتراك
           </Link>
 
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={logout}
-            className="w-full justify-center text-[#DC2626] hover:text-[#DC2626] hover:bg-[#FEF2F2] dark:hover:bg-[#7F1D1D]/20 gap-2"
-          >
-            <LogOut className="w-4 h-4 rtl:rotate-180" />
-            <span>تسجيل الخروج</span>
-          </Button>
         </div>
       </div>
     </div>

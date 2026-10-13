@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { BarChart3, Briefcase, CalendarDays, CreditCard, LogOut, Settings, Star, Users } from 'lucide-react'
-import { Button } from '@/components/ui/Button'
-import { Badge } from '@/components/ui/Badge'
+import { BarChart3, CalendarDays, CreditCard, Star, Users, ScanLine } from 'lucide-react'
 import { useAuth } from '@/features/auth/hooks/useAuth'
 import { analyticsService, getAnalyticsRange, type AnalyticsRange, type TeacherAnalytics } from '@/features/analytics/analyticsService'
 import { AnalyticsBars, AnalyticsControls, RatingDistribution } from '@/components/analytics/AnalyticsControls'
@@ -13,7 +11,7 @@ const dateLabel = (value: string | null) => value ? new Date(value).toLocaleDate
 const subscriptionStatusLabel = (value: string | null) => ({ ACTIVE: 'نشط', EXPIRED: 'منتهي', APPROVED: 'معتمد', PENDING_PAYMENT: 'بانتظار الدفع', PAYMENT_SUBMITTED: 'تم إرسال الدفع', UNDER_REVIEW: 'قيد المراجعة', REJECTED: 'مرفوض', CANCELLED: 'ملغي' }[value ?? ''] ?? 'لا يوجد اشتراك')
 
 export const TeacherDashboardPlaceholder = () => {
-  const { profile, logout } = useAuth()
+  const { profile } = useAuth()
   const { notifications, loading: notificationsLoading } = useNotifications()
   const [range, setRange] = useState<AnalyticsRange>(() => getAnalyticsRange('30'))
   const [groupId, setGroupId] = useState('')
@@ -42,15 +40,13 @@ export const TeacherDashboardPlaceholder = () => {
 
   return <main dir="rtl" className="min-h-screen bg-[#F8FAFC] p-4 text-[#0F172A] dark:bg-[#0F172A] dark:text-[#F8FAFC] sm:p-8">
     <div className="mx-auto max-w-6xl space-y-5">
-      <header className="flex flex-wrap items-center justify-between gap-4 rounded-xl border border-[#E2E8F0] bg-white p-5 dark:border-[#334155] dark:bg-[#1E293B]">
-        <div><div className="flex items-center gap-2"><Briefcase className="h-5 w-5 text-[#2563EB]" /><h1 className="text-xl font-bold">لوحة تحكم المدرس</h1></div><p className="mt-1 text-sm text-[#64748B] dark:text-[#94A3B8]">مرحبًا، {profile?.full_name}</p></div>
-        <div className="flex flex-wrap items-center gap-2"><Badge variant="success">مدرس نشط</Badge><Link to="/teacher/settings"><Button variant="outline" size="sm"><Settings className="h-4 w-4" />الإعدادات</Button></Link><Button variant="outline" size="sm" onClick={() => void logout()}><LogOut className="h-4 w-4" />خروج</Button></div>
-      </header>
+      <header><h1 className="text-xl font-bold">لوحة تحكم المدرس</h1><p className="mt-1 text-sm text-[#64748B] dark:text-[#94A3B8]">مرحبًا، {profile?.full_name}</p></header>
 
       <nav className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <Link to="/teacher/profile" className="flex items-center gap-2 rounded-lg border border-[#E2E8F0] bg-white p-4 text-sm hover:border-[#2563EB] dark:border-[#334155] dark:bg-[#1E293B]"><Users className="h-4 w-4 text-[#2563EB]" />بيانات المدرس والمجموعات</Link>
         <Link to="/teacher/sessions" className="flex items-center gap-2 rounded-lg border border-[#E2E8F0] bg-white p-4 text-sm hover:border-[#2563EB] dark:border-[#334155] dark:bg-[#1E293B]"><CalendarDays className="h-4 w-4 text-[#2563EB]" />الحصص والحضور</Link>
         <Link to="/teacher/students" className="flex items-center gap-2 rounded-lg border border-[#E2E8F0] bg-white p-4 text-sm hover:border-[#2563EB] dark:border-[#334155] dark:bg-[#1E293B]"><CreditCard className="h-4 w-4 text-[#2563EB]" />طلبات الاشتراك</Link>
+        <Link to="/teacher/verify-subscription" className="flex items-center gap-2 rounded-lg border border-[#E2E8F0] bg-white p-4 text-sm hover:border-[#2563EB] dark:border-[#334155] dark:bg-[#1E293B]"><ScanLine className="h-4 w-4 text-[#2563EB]" />التحقق من اشتراك طالب</Link>
         <Link to="/teacher/subscription" className="flex items-center gap-2 rounded-lg border border-[#E2E8F0] bg-white p-4 text-sm hover:border-[#2563EB] dark:border-[#334155] dark:bg-[#1E293B]"><Star className="h-4 w-4 text-[#2563EB]" />اشتراك Classy</Link>
       </nav>
 

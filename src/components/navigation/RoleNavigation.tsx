@@ -54,10 +54,10 @@ export const RoleNavigation: React.FC<RoleNavigationProps> = ({ role }) => {
       </nav>
 
       <div className="mr-auto flex shrink-0 items-center gap-2">
-        <NotificationBell />
         <Link to={settingsPath} aria-label="الإعدادات" title="الإعدادات" className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[#E2E8F0] text-[#334155] transition-colors hover:bg-[#F8FAFC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] dark:border-[#334155] dark:text-[#F8FAFC] dark:hover:bg-[#1E293B]"><Settings className="h-4 w-4" /></Link>
         <button type="button" aria-label="تسجيل الخروج" title="تسجيل الخروج" onClick={() => void logout()} className="inline-flex h-10 items-center justify-center gap-2 rounded-lg border border-[#E2E8F0] px-3 text-sm text-[#334155] transition-colors hover:bg-[#F8FAFC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] dark:border-[#334155] dark:text-[#F8FAFC] dark:hover:bg-[#1E293B]"><LogOut className="h-4 w-4" /><span className="hidden xl:inline">تسجيل الخروج</span></button>
         <button type="button" aria-label={menuOpen ? 'إغلاق القائمة' : 'فتح القائمة'} aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)} className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[#E2E8F0] lg:hidden dark:border-[#334155]">{menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
+        <div><NotificationBell /></div>
       </div>
     </div>
 

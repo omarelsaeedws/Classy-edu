@@ -1,6 +1,6 @@
 # Classy
 
-Classy is an Arabic-first, right-to-left education platform that connects students with teachers and helps them manage lessons, subscriptions, and attendance. The platform is initially focused on Abu Kebir, Sharqia, Egypt.
+Classy is an Arabic, r education platform that connects students with teachers and helps them manage lessons, subscriptions, and attendance. The platform is initially focused on Abu Kebir, Sharqia, Egypt.
 
 ## What Classy Does
 
